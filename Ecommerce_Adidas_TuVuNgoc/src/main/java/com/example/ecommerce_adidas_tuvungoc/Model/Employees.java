@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Employees")
@@ -29,8 +30,10 @@ public class Employees {
     private Date dateOfBirthEmployee;
     @Column(name = "startWork_Employee")
     private LocalDate startWorkEmployee;
-    @Column(name = "role_Employee")
-    private Integer roleEmployee;
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "Employee_Roles", joinColumns = @JoinColumn(name = "employee_id"))
+    @Column(name = "role")
+    private List<String> roles;
     @Column(name = "status_Employee")
     private Integer statusEmployee;
 }
