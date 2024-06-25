@@ -1,0 +1,18 @@
+package com.example.ecommerce_adidas_tuvungoc.Common;
+
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+
+
+public class ConvertTime {
+    public static String convert(String time){
+        Instant instant = Instant.ofEpochMilli(Long.valueOf(time));
+        LocalDateTime localDateTime = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        return localDateTime.format(formatter);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(convert(""));
+    }
+}
