@@ -11,4 +11,5 @@ public class Constants {
     public static final int LENGTH_DESCRIPTION = 255;
     public static final int LENGTH_EMAIL_MIN = 20;
     public static final int LENGTH_EMAIL_MAX = 50;
+    public static final int LENGTH_PHONENUMBER_MAX = 10;
 }
