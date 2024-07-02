@@ -15,7 +15,7 @@ public class BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter(AccessLevel.NONE)
     @Column(name = "id", updatable = false, insertable = false)
-    Long id;
+    Integer id;
     @Column(name = "create_at", updatable = false)
     Long createAt;
     @Column(name = "modify_at")

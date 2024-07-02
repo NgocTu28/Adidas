@@ -30,5 +30,5 @@ public class Employee_Create {
     @Max(value = 1, message = "Status is invalid")
     Integer status;
     @NotNull(message = "Status cannot is blank")
-    Long idRole;
+    Integer idRole;
 }

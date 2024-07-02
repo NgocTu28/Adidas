@@ -12,7 +12,7 @@ import lombok.experimental.FieldDefaults;
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Employee_Update {
-    Long id;
+    Integer id;
     @NotBlank(message = "name cannot bank")
     String name;
     @NotBlank(message = "email cannot bank")
@@ -22,5 +22,5 @@ public class Employee_Update {
     @Max(value = 1, message = "Status is invalid")
     Integer status;
     @NotNull(message = "Status cannot is blank")
-    Long idRole;
+    Integer idRole;
 }

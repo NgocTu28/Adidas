@@ -1,7 +1,6 @@
 package com.example.ecommerce_adidas_tuvungoc.Repository;
 
 import com.example.ecommerce_adidas_tuvungoc.Dto.Request.Customer_Update;
-import com.example.ecommerce_adidas_tuvungoc.Dto.Response.Customer_Reponse;
 import com.example.ecommerce_adidas_tuvungoc.Entity.Customer;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -28,20 +27,24 @@ public interface Customer_Repository extends JpaRepository<Customer, Integer> {
     Optional<Customer> findById(@Param("id") Long id);
 
     @Query("SELECT s FROM Customer s WHERE s.role.id = :roleId")
-    List<Customer> findByRoleId(@Param("roleId") Long roleId);
+    List<Customer> findByRoleId(@Param("roleId") Integer roleId);
+
+    @Query("SELECT c FROM Customer c WHERE c.email = :email AND c.phone = :phoneNumber")
+    Customer findByPhoneNumberAndEmail(@Param("email") String email, @Param("phoneNumber") String phoneNumber);
 
     boolean existsByEmail(String email);
 
     boolean existsByCode(String code);
 
     boolean existsByPhone(String phone);
+
     Customer createCustomerWithSessionId(String sessionId);
 
     Customer findBySessionId(String sessionId);
 
     Customer updateForCustomerGuest(Customer_Update update);
 
-    Customer findByIdEntity(Long id);
+    Customer findByIdEntity(Integer id);
 
-    Page<Customer_Reponse> findByNameOrPhoneOrEmailOrCode(String key, Pageable pageable);
+    Page<Customer> findByNameOrPhoneOrEmailOrCode(String key, Pageable pageable);
 }

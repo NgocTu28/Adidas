@@ -31,4 +31,12 @@ public interface Employee_Repository extends JpaRepository<Employee, Integer> {
     @Query("SELECT s FROM Employee s WHERE s.role.id = :roleId")
     List<Employee> findByRoleId(@Param("roleId") Long roleId);
 
+    boolean existsByUsername(String username);
+
+    boolean existsByEmail(String email);
+
+    @Query("SELECT s FROM Employee s WHERE s.email = :email AND s.id <> :id")
+    List<Employee> existByEmailAndDifferentId(@Param("email") String email,@Param("id") Long id);
 }
+
+

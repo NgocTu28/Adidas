@@ -13,7 +13,7 @@ public interface Employee_Service {
 
     Employee_Reponse update(Employee_Update employeeUpdate);
 
-    void delete(Long id);
+    void delete(Integer id);
 
     Page<Employee_Reponse> getAll(Pageable pageable);
 
@@ -21,7 +21,7 @@ public interface Employee_Service {
 
     boolean isExistByUsername(String username);
 
-    Employee_Reponse findById(Long id);
+    Employee_Reponse findById(Integer id);
 
     boolean existByEmail(String email);
 }

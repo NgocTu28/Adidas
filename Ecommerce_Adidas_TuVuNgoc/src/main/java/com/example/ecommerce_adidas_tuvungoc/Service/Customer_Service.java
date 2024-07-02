@@ -34,4 +34,13 @@ public interface Customer_Service {
 
     void deleteById(Integer id);
 
+    Customer createCustomerWithSessionId(String sessionId);
+
+    Customer findBySessionId(String sessionId);
+
+    Customer updateForCustomerGuest(Customer_Update update);
+
+    Customer findByIdEntity(Integer id);
+
+    Page<Customer_Reponse> findByNameOrPhoneOrEmailOrCode(String key, Pageable pageable);
 }

@@ -12,7 +12,7 @@ import lombok.experimental.FieldDefaults;
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Employee_Reponse {
-    Long id;
+    Integer id;
     String username;
     String email;
     String role;
