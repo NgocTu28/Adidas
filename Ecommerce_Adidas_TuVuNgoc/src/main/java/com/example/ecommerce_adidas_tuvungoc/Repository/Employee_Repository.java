@@ -20,7 +20,7 @@ public interface Employee_Repository extends JpaRepository<Employee, Integer> {
     Page<Employee> findByStatus(Pageable pageable, @Param("status") Integer status);
 
     @Query("SELECT s FROM Employee s WHERE s.id = :id")
-    Optional<Employee> findById(@Param("id") Long id);
+    Optional<Employee> findById(@Param("id") Integer id);
 
     @Query("SELECT s FROM Employee  s WHERE s.email = :email")
     Optional<Employee> findByUsername(@Param("email") String email);
@@ -29,14 +29,9 @@ public interface Employee_Repository extends JpaRepository<Employee, Integer> {
     List<Employee> findByName(@Param("name") String name);
 
     @Query("SELECT s FROM Employee s WHERE s.role.id = :roleId")
-    List<Employee> findByRoleId(@Param("roleId") Long roleId);
-
-    boolean existsByUsername(String username);
+    List<Employee> findByRoleId(@Param("roleId") Integer roleId);
 
     boolean existsByEmail(String email);
-
-    @Query("SELECT s FROM Employee s WHERE s.email = :email AND s.id <> :id")
-    List<Employee> existByEmailAndDifferentId(@Param("email") String email,@Param("id") Long id);
 }
 
 

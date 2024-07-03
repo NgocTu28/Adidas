@@ -24,7 +24,7 @@ public interface Customer_Repository extends JpaRepository<Customer, Integer> {
     Page<Customer> findByStatus(Pageable pageable, @Param("status") Integer status);
 
     @Query("SELECT s FROM Customer s WHERE s.id = :id")
-    Optional<Customer> findById(@Param("id") Long id);
+    Optional<Customer> findById(@Param("id") Integer id);
 
     @Query("SELECT s FROM Customer s WHERE s.role.id = :roleId")
     List<Customer> findByRoleId(@Param("roleId") Integer roleId);
@@ -38,13 +38,5 @@ public interface Customer_Repository extends JpaRepository<Customer, Integer> {
 
     boolean existsByPhone(String phone);
 
-    Customer createCustomerWithSessionId(String sessionId);
-
     Customer findBySessionId(String sessionId);
-
-    Customer updateForCustomerGuest(Customer_Update update);
-
-    Customer findByIdEntity(Integer id);
-
-    Page<Customer> findByNameOrPhoneOrEmailOrCode(String key, Pageable pageable);
 }

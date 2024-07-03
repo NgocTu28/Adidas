@@ -6,10 +6,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public interface Role_Repository extends JpaRepository<Role, Integer> {
     @Query("SELECT c FROM Role c")
     Page<Role> getAll(Pageable pageable);
@@ -26,5 +28,5 @@ public interface Role_Repository extends JpaRepository<Role, Integer> {
 
 
     @Query("SELECT c FROM Role c WHERE c.name = :name AND c.id <> :id")
-    List<Role> existsByNameAndDifferentId(@Param("name") String name, @Param("id") Long id);
+    List<Role> existsByNameAndDifferentId(@Param("name") String name, @Param("id") Integer id);
 }

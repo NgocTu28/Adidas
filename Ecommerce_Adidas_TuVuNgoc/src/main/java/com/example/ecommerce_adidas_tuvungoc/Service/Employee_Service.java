@@ -19,8 +19,6 @@ public interface Employee_Service {
 
     Page<Employee_Reponse> findByStatus(Pageable pageable, Integer status);
 
-    boolean isExistByUsername(String username);
-
     Employee_Reponse findById(Integer id);
 
     boolean existByEmail(String email);

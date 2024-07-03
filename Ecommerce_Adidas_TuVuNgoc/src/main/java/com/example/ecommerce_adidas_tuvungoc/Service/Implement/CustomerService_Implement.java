@@ -11,6 +11,7 @@ import com.example.ecommerce_adidas_tuvungoc.Repository.Customer_Repository;
 import com.example.ecommerce_adidas_tuvungoc.Repository.Role_Repository;
 import com.example.ecommerce_adidas_tuvungoc.Service.Customer_Service;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -26,6 +27,7 @@ import java.util.Optional;
 public class CustomerService_Implement implements Customer_Service {
     private final Customer_Repository customerRepository;
     private final GenerateCode generateCode;
+    @Qualifier("customer_Mapper")
     private final Customer_Mapper customerMapper;
     private final PasswordEncoder passwordEncoder;
     private final Role_Repository roleRepository;
@@ -124,12 +126,12 @@ public class CustomerService_Implement implements Customer_Service {
     }
 
     @Override
-    public Customer findByIdEntity(Integer id) {
-        return customerRepository.findByIdEntity(id);
+    public Optional<Customer> findByIdCustomer(Integer id) {
+        return customerRepository.findById(id);
     }
 
     @Override
-    public Page<Customer_Reponse> findByNameOrPhoneOrEmailOrCode(String key, Pageable pageable) {
-        return customerMapper.listEntityToListResponse(customerRepository.findByNameOrPhoneOrEmailOrCode(key.trim().toLowerCase(), pageable));
+    public Customer_Reponse findById(Integer id) {
+        return customerMapper.entityToResponse(customerRepository.findById(id).orElse(null));
     }
 }

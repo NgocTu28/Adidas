@@ -53,7 +53,7 @@ public class EmployeeMapper_Implement implements Employees_Mapper {
     }
 
     @Override
-    public Page<Employee_Reponse> employeeEntityToEmployeeReponsePage(Page<Employee> employeePage) {
+    public Page<Employee_Reponse> listEmployeeEntityToEmployeeReponsePage(Page<Employee> employeePage) {
         List<Employee_Reponse> responses = employeePage.getContent()
                 .stream().map(this::employeeEntityToEmployeeReponse).collect(Collectors.toList());
         return new PageImpl<>(responses, employeePage.getPageable(), employeePage.getTotalElements());

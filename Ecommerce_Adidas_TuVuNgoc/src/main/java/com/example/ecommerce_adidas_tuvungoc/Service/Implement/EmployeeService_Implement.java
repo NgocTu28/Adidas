@@ -70,11 +70,6 @@ public class EmployeeService_Implement implements Employee_Service {
     }
 
     @Override
-    public boolean isExistByUsername(String username) {
-        return employee_Repository.existsByUsername(username);
-    }
-
-    @Override
     public Employee_Reponse findById(Integer id) {
         return employeesMapper.employeeEntityToEmployeeReponse(employee_Repository.findById(id).orElse(null));
     }

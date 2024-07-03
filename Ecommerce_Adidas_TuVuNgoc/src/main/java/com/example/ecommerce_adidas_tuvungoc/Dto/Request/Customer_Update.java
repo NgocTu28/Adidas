@@ -12,7 +12,7 @@ import lombok.experimental.FieldDefaults;
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Customer_Update {
-    Long id;
+    Integer id;
     @NotEmpty(message = "Name cannot is blank")
     @Pattern(regexp = "^[a-zA-Z\\p{L}\\s]+$", message = "Invalid name")
     String name;

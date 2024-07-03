@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public interface Customer_Service {
@@ -40,7 +41,7 @@ public interface Customer_Service {
 
     Customer updateForCustomerGuest(Customer_Update update);
 
-    Customer findByIdEntity(Integer id);
+    Optional<Customer> findByIdCustomer(Integer id);
 
-    Page<Customer_Reponse> findByNameOrPhoneOrEmailOrCode(String key, Pageable pageable);
+    Customer_Reponse findById(Integer id);
 }
